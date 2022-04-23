@@ -5,15 +5,15 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637844818664465465
-    m_Hash: 907765597
+      ticks: 637862881391987117
+    m_Hash: 3486318922
   m_LockFileStatus:
     m_FilePath: C:/Users/Appedu/Desktop/Unity2.5D_SpaceShooter_Unity-2020.2.1f1/SpaceShooter/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637856826406056701
+      ticks: 637862882093069871
     m_Hash: 1870483793
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
