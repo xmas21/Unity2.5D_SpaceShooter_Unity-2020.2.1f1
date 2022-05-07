@@ -404,10 +404,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingPage: {fileID: 212870143}
-  mute_sprite:
-  - {fileID: 21300000, guid: 22ec38198db5a614bb22ed497aefb5c4, type: 3}
-  - {fileID: 21300000, guid: d946382403562c047b53849c607d4390, type: 3}
+  sound_sprite:
+  - {fileID: 0}
+  - {fileID: 0}
   mute_img: {fileID: 252660477}
+  sound_Slider: {fileID: 952319033}
+  Path: 
+  FilePath: []
 --- !u!1 &149044771
 GameObject:
   m_ObjectHideFlags: 0
@@ -933,7 +936,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 360, y: 480}
-  m_SizeDelta: {x: 150, y: 150}
+  m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &252660476
 MonoBehaviour:
@@ -981,7 +984,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 103771106}
         m_TargetAssemblyTypeName: scr_Menumanager, Assembly-CSharp
-        m_MethodName: Sound
+        m_MethodName: Mute
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1011,7 +1014,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 22ec38198db5a614bb22ed497aefb5c4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b5b2c99d24dffd84e9c20e3b01861f6c, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -2171,9 +2174,9 @@ RectTransform:
   - {fileID: 378634494}
   - {fileID: 1941236776}
   - {fileID: 411455817}
+  - {fileID: 952319032}
   - {fileID: 725748947}
   - {fileID: 1873913530}
-  - {fileID: 952319032}
   - {fileID: 252660475}
   m_Father: {fileID: 212870144}
   m_RootOrder: 1
@@ -2196,7 +2199,7 @@ GameObject:
   - component: {fileID: 674499491}
   - component: {fileID: 674499490}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2455,7 +2458,7 @@ RectTransform:
   - {fileID: 2120666530}
   - {fileID: 1680736600}
   m_Father: {fileID: 647472125}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2895,7 +2898,7 @@ RectTransform:
   - {fileID: 1307742432}
   - {fileID: 818627221}
   m_Father: {fileID: 647472125}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2952,7 +2955,19 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 103771106}
+        m_TargetAssemblyTypeName: scr_Menumanager, Assembly-CSharp
+        m_MethodName: SliderChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &960545690
 GameObject:
   m_ObjectHideFlags: 0
@@ -2966,7 +2981,7 @@ GameObject:
   - component: {fileID: 960545693}
   - component: {fileID: 960545692}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4781,7 +4796,7 @@ RectTransform:
   - {fileID: 1450198693}
   - {fileID: 448208948}
   m_Father: {fileID: 647472125}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5246,7 +5261,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.8773585, g: 0.8381917, b: 0.624911, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
