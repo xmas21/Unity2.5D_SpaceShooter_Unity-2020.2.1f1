@@ -404,13 +404,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingPage: {fileID: 212870143}
-  sound_sprite:
-  - {fileID: 0}
-  - {fileID: 0}
+  soundOn_sprite: {fileID: 0}
+  soundOff_sprite: {fileID: 0}
   mute_img: {fileID: 252660477}
   sound_Slider: {fileID: 952319033}
-  Path: 
-  FilePath: []
+  am: {fileID: 24100000, guid: 0067f64fd5ee42e44b8208edd0c46210, type: 2}
+  bgm_Toggle: {fileID: 725748948}
+  sfx_Toggle: {fileID: 1873913531}
+  path: 
+  fileInPath: []
 --- !u!1 &149044771
 GameObject:
   m_ObjectHideFlags: 0
@@ -2511,7 +2513,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 103771106}
+        m_TargetAssemblyTypeName: scr_Menumanager, Assembly-CSharp
+        m_MethodName: ControlToggle
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: BGM
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &818627220
 GameObject:
@@ -4849,7 +4863,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 103771106}
+        m_TargetAssemblyTypeName: scr_Menumanager, Assembly-CSharp
+        m_MethodName: ControlToggle
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: SFX
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &1881359167
 GameObject:
