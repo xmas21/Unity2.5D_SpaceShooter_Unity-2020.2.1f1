@@ -15,14 +15,15 @@ public class scr_Menumanager : MonoBehaviour
     [SerializeField] [Header("Audio Mixer")] AudioMixer am;
     [SerializeField] [Header("BGM Toggle")] Toggle bgm_Toggle;
     [SerializeField] [Header("SFX Toggle")] Toggle sfx_Toggle;
+    [SerializeField] [Header("解析度 Dropdown")] Dropdown screenDropdown;
+    [SerializeField] [Header("解析度 Dropdown")] Dropdown languageDropdown;
 
     bool isSetting;              // 是否開啟設定畫面
     bool isMute;                 // 是否全部靜音
+    string path;                 // Stream Assets 路徑
+    string[] fileInPath;         // Stream Assets 路徑內檔案
 
     Button start_btn;            // 開始按鈕
-
-    [SerializeField] [Header("Stream Assets 路徑")] string path;
-    [SerializeField] [Header("Stream Assets 路徑內檔案")] string[] fileInPath;
     #endregion
 
     #region - MonoBehaviours - 
@@ -31,7 +32,7 @@ public class scr_Menumanager : MonoBehaviour
         start_btn = GameObject.Find("Start - btn").GetComponent<Button>();
 
         Initialize();
-        LoadStreamFile();
+       // LoadStreamFile();
 
         // 使用 Resources
         soundOn_sprite = Resources.Load<Sprite>("Sound on");
@@ -94,13 +95,40 @@ public class scr_Menumanager : MonoBehaviour
     }
 
     /// <summary>
-    /// 控制切換
+    /// 控制 切換音效靜音
     /// </summary>
-    public void ControlToggle(string audiomixer)
+    public void ControlAudioToggle(string audiomixer)
     {
         if (bgm_Toggle.isOn) am.SetFloat(audiomixer, 0f);
 
         else am.SetFloat(audiomixer, -80f);
+    }
+
+    /// <summary>
+    /// 控制 切換螢幕大小
+    /// </summary>
+    public void ControlScreenSize()
+    {
+        switch (screenDropdown.value)
+        {
+            case 0:
+                Screen.SetResolution(480, 800, false);
+                break;
+            case 1:
+                Screen.SetResolution(720, 1280, false);
+                break;
+            case 2:
+                Screen.SetResolution(1080, 1920, false);
+                break;
+        }
+    }
+
+    /// <summary>
+    /// 控制 切換語言
+    /// </summary>
+    public void ControlLanguage()
+    {
+        scr_StaticVar.language_Dropdown = languageDropdown.value;
     }
 
     /// <summary>
