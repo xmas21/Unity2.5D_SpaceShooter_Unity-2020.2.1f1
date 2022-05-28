@@ -32,15 +32,10 @@ public class scr_Menumanager : MonoBehaviour
     {
         start_btn = GameObject.Find("Start - btn").GetComponent<Button>();
         aud = GetComponent<AudioSource>();
-
-        Initialize();
-        // LoadStreamFile();
-
-        // 使用 Resources
         soundOn_sprite = Resources.Load<Sprite>("Sound on");
         soundOff_sprite = Resources.Load<Sprite>("Sound off");
 
-        // 使用 StreamingAssets
+        Initialize();
     }
 
     void Start()
@@ -48,9 +43,11 @@ public class scr_Menumanager : MonoBehaviour
         ButtonEvent();
     }
 
+    [System.Obsolete]
     void Update()
     {
         AudioListener.volume = sound_Slider.value;
+        BGMMute();
     }
     #endregion
 
@@ -75,7 +72,6 @@ public class scr_Menumanager : MonoBehaviour
         if (isMute) mute_img.sprite = soundOff_sprite;
         else if (!isMute) mute_img.sprite = soundOn_sprite;
 
-        // pause = true > 靜音  |  pause = false > 恢復聲音
         AudioListener.pause = isMute;
     }
 
@@ -84,16 +80,10 @@ public class scr_Menumanager : MonoBehaviour
     /// </summary>
     public void SliderChange()
     {
-        if (sound_Slider.value == 0)
-        {
-            isMute = false;
-            Mute();
-        }
-        else
-        {
-            isMute = true;
-            Mute();
-        }
+        if (sound_Slider.value == 0) isMute = false;
+        else isMute = true;
+
+        Mute();
     }
 
     /// <summary>
@@ -102,8 +92,16 @@ public class scr_Menumanager : MonoBehaviour
     public void ControlAudioToggle(string audiomixer)
     {
         if (bgm_Toggle.isOn) am.SetFloat(audiomixer, 0f);
-
         else am.SetFloat(audiomixer, -80f);
+    }
+
+    /// <summary>
+    /// 切換場景
+    /// </summary>
+    /// <param name="sceneName">場景名稱</param>
+    void ChangeScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 
     /// <summary>
@@ -171,15 +169,7 @@ public class scr_Menumanager : MonoBehaviour
         soundOn_sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0f, 0f), 100f);
     }
 
-    /// <summary>
-    /// 切換場景
-    /// </summary>
-    /// <param name="sceneName">場景名稱</param>
-    void ChangeScene(string sceneName)
-    {
-        SceneManager.LoadScene(sceneName);
-    }
-
+    [System.Obsolete]
     void BGMMute()
     {
         if (Application.loadedLevelName == "Video") aud.mute = true;

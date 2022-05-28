@@ -12,14 +12,15 @@ public class scr_SaveSettingData : MonoBehaviour
     string path;
     string readerPC;
 
-    WWW reader;
     FileStream fs;
+    [System.Obsolete] WWW reader;
 
     void Awake()
     {
         path = Application.persistentDataPath + "Save.txt";
     }
 
+    [System.Obsolete]
     void Start()
     {
         CheckFile(path);
@@ -37,18 +38,33 @@ public class scr_SaveSettingData : MonoBehaviour
     /// 創建檔案
     /// </summary>
     /// <param name="_path">檔案路徑</param>
+    [System.Obsolete]
     void CheckFile(string _path)
     {
-        if (File.Exists(_path))
+        if (File.Exists(_path)) ReadString(_path);
+        else fs = new FileStream(_path, FileMode.Create);
+    }
+
+    /// <summary>
+    /// 讀檔 - 設定語言 / 大小
+    /// </summary>
+    /// <param name="_path">檔案路徑</param>
+    [System.Obsolete]
+    void ReadString(string _path)
+    {
+        switch (platform)
         {
-            // 恢復上次設定
-            ReadString(path);
+            case Platform.PC:
+                readerPC = File.ReadAllText(_path);
+                datas = readerPC.Split('@');
+                break;
+            case Platform.Mobile:
+                reader = new WWW(_path);
+                datas = reader.text.Split('@');
+                break;
         }
-        else
-        {
-            fs = new FileStream(_path, FileMode.Create);
-            fs.Close();
-        }
+        size_Dropdown.value = int.Parse(datas[0]);
+        language_Dropdown.value = int.Parse(datas[1]);
     }
 
     /// <summary>
@@ -65,32 +81,13 @@ public class scr_SaveSettingData : MonoBehaviour
         sw.WriteLine(_data);
 
         sw.Close();
-    }
-
-    /// <summary>
-    /// 讀檔 - 設定語言 / 大小
-    /// </summary>
-    /// <param name="_path">檔案路徑</param>
-    void ReadString(string _path)
-    {
-        switch (platform)
-        {
-            case Platform.PC:
-                readerPC = File.ReadAllText(_path);
-                datas = readerPC.Split('@');
-                size_Dropdown.value = int.Parse(datas[0]);
-                language_Dropdown.value = int.Parse(datas[1]);
-                break;
-            case Platform.Mobile:
-                reader = new WWW(_path);
-                datas = reader.text.Split('@');
-                size_Dropdown.value = int.Parse(datas[0]);
-                language_Dropdown.value = int.Parse(datas[1]);
-                break;
-        }
+        fs.Close();
     }
 }
 
+/// <summary>
+/// 平台
+/// </summary>
 enum Platform
 {
     PC, Mobile
