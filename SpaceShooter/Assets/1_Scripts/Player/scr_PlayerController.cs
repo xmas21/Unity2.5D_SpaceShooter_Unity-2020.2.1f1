@@ -3,13 +3,21 @@ using UnityEngine;
 public class scr_PlayerController : MonoBehaviour
 {
     #region - Fields -
-    [Header("PC 遊玩操控方式")] static Moveway moveway;
+    [Header("PC 遊玩操控方式")] public PCmoveway pcMoveway;
+    [Header("Mobile 遊玩操控方式")] public Mobilemoveway mobilemoveway;
+
+    [SerializeField] [Header("搖桿物件")] GameObject joystick_obj;
+    [SerializeField] [Header("子彈物件")] GameObject bullet_obj;
+    [SerializeField] [Header("子彈生成點")] Transform bullet_trans;
+
+    [SerializeField] [Header("子彈生成間隔")] float bulletInterval;
 
     float X_min, X_max;      // 飛機 X軸上下限
     float Y_min, Y_max;      // 飛機 Y軸上下面
     float moveSpeed;         // 移動速度
 
     bool mouseTouchPlayer;   // 滑鼠 / 手指是否按到玩家
+    bool isJoysticked;       // 是否點擊到搖桿
 
     Vector3 mousePos;        // 滑鼠座標
     #endregion
@@ -18,6 +26,8 @@ public class scr_PlayerController : MonoBehaviour
     void Start()
     {
         Initialize();
+
+        InvokeRepeating("Shoot", 1f, bulletInterval);
     }
 
     void Update()
@@ -36,14 +46,40 @@ public class scr_PlayerController : MonoBehaviour
     }
     #endregion
 
+    #region - Unity Event -
+    /// <summary>
+    /// 按下搖桿
+    /// </summary>
+    public void IsUsingJoystick()
+    {
+        isJoysticked = true;
+    }
+
+    /// <summary>
+    /// 放開搖桿
+    /// </summary>
+    public void UnUsingJoystick()
+    {
+        isJoysticked = false;
+    }
+    #endregion
+
     #region - Methods -
+    /// <summary>
+    /// 移動搖桿
+    /// </summary>
+    public void UsingJoystick(Vector3 pos)
+    {
+        if (isJoysticked) transform.Translate(pos.x * moveSpeed * Time.deltaTime, 0f, pos.y * moveSpeed * Time.deltaTime);
+    }
+
     /// <summary>
     /// 初始化
     /// </summary>
     void Initialize()
     {
-        X_min = -1.2f;
-        X_max = 1.2f;
+        X_min = -1.42f;
+        X_max = 1.42f;
         Y_min = -0.9f;
         Y_max = 2.7f;
 
@@ -57,32 +93,63 @@ public class scr_PlayerController : MonoBehaviour
     void Move(float _speed)
     {
 #if UNITY_STANDALONE_WIN
-        switch (moveway)
+        switch (pcMoveway)
         {
-            case Moveway.mouse:
+            case PCmoveway.mouse:
+                joystick_obj.SetActive(false);
                 if (mouseTouchPlayer)
                 {
                     mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     transform.position = new Vector3(mousePos.x, mousePos.y, -6f);
                 }
                 break;
-            case Moveway.keyboard:
+            case PCmoveway.keyboard:
+                joystick_obj.SetActive(false);
                 transform.Translate(Input.GetAxisRaw("Horizontal") * Time.deltaTime * _speed, 0, Input.GetAxisRaw("Vertical") * Time.deltaTime * _speed);
+                break;
+            case PCmoveway.joystick:
+                joystick_obj.SetActive(true);
                 break;
         }
 #endif
-
 #if UNITY_ANDROID
-        transform.Translate(Input.acceleration.x * Time.deltaTime * _speed, 0, Input.acceleration.y * Time.deltaTime * _speed); // 陀螺儀
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, X_min, X_max), Mathf.Clamp(transform.position.y, Y_min, Y_max), transform.position.z);
+        switch (mobilemoveway)
+        {
+            case Mobilemoveway.acceleration:
+                joystick_obj.SetActive(false);
+                transform.Translate(Input.acceleration.x * Time.deltaTime * _speed, 0, Input.acceleration.y * Time.deltaTime * _speed); // 陀螺儀
+                transform.position = new Vector3(Mathf.Clamp(transform.position.x, X_min, X_max), Mathf.Clamp(transform.position.y, Y_min, Y_max), transform.position.z);
+                break;
+            case Mobilemoveway.joystick:
+                joystick_obj.SetActive(true);
+                break;
+        }
 #endif
-
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, X_min, X_max), Mathf.Clamp(transform.position.y, Y_min, Y_max), -6f);
+    }
+
+    /// <summary>
+    /// 射擊
+    /// </summary>
+    void Shoot()
+    {
+        GameObject temp = Instantiate(bullet_obj, bullet_trans.position, bullet_trans.rotation);
     }
     #endregion
 }
 
-enum Moveway
+/// <summary>
+/// PC 移動
+/// </summary>
+public enum PCmoveway
 {
-    mouse, keyboard
+    mouse, keyboard, joystick
+}
+
+/// <summary>
+/// 手機 移動
+/// </summary>
+public enum Mobilemoveway
+{
+    acceleration, joystick
 }

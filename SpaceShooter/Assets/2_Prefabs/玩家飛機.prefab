@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 1684200214969810638}
   - component: {fileID: 1684200214967869448}
   - component: {fileID: 1684200214967869449}
+  - component: {fileID: 1684200214648020127}
   m_Layer: 0
   m_Name: "\u73A9\u5BB6\u98DB\u6A5F"
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,6 +116,24 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300002, guid: d9808401c68af274a8edfbed3d1b53c7, type: 3}
+--- !u!114 &1684200214648020127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684200214967869454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e926e835eb4d70c4f99fb091df0c7fe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pcMoveway: 0
+  mobilemoveway: 0
+  joystick_obj: {fileID: 0}
+  bullet_obj: {fileID: 2686524078277540097, guid: 69830f71e9e4377449cfb010497585e2, type: 3}
+  bullet_trans: {fileID: 1684200215282785583}
+  bulletInterval: 0.5
 --- !u!1 &1684200215282785580
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,10 +157,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684200215282785580}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: -0.062, z: 0.738}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1684200214967909422}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}

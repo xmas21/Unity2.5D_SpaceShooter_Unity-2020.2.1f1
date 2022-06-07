@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 8973298642911577956}
   - component: {fileID: 8973298642909649318}
   - component: {fileID: 8973298642909649317}
+  - component: {fileID: -9118905751686544935}
   m_Layer: 0
   m_Name: "\u9695\u77F3"
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,3 +113,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.78744775
   m_Center: {x: 0, y: 0.00000002980232, z: -0.00000002980232}
+--- !u!114 &-9118905751686544935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8973298642909649316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cedf0a3527ac9548919b5015b6cda02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet_obj: {fileID: 0}
+  bullet_trans: {fileID: 0}
+  bulletInterval: 0
+  isFighter: 0
