@@ -6,6 +6,8 @@ public class scr_PlayerController : MonoBehaviour
     [Header("PC 遊玩操控方式")] public PCmoveway pcMoveway;
     [Header("Mobile 遊玩操控方式")] public Mobilemoveway mobilemoveway;
 
+    [Header("血量")] public float hp;
+
     [SerializeField] [Header("搖桿物件")] GameObject joystick_obj;
     [SerializeField] [Header("子彈物件")] GameObject bullet_obj;
     [SerializeField] [Header("子彈生成點")] Transform bullet_trans;

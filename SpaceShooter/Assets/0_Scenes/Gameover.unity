@@ -123,6 +123,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &60819323
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 60819324}
+  - component: {fileID: 60819325}
+  m_Layer: 0
+  m_Name: Gameover Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &60819324
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60819323}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.8880364, y: 4, z: -8.046888}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &60819325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60819323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cea7d528891b644195d56e43e931f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentScore_Text: {fileID: 1777983893}
+  highScore_Text: {fileID: 760484946}
 --- !u!1 &161059420
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,7 +564,7 @@ GameObject:
   - component: {fileID: 760484946}
   - component: {fileID: 760484945}
   m_Layer: 5
-  m_Name: "\u6700\u9AD8\u5F97\u5206__text"
+  m_Name: HighScore Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -714,7 +759,7 @@ GameObject:
   - component: {fileID: 1070312246}
   - component: {fileID: 1070312248}
   m_Layer: 5
-  m_Name: "\u91CD\u65B0\u904A\u6232__Btn"
+  m_Name: Replay Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -783,7 +828,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1070312248}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 60819325}
+        m_TargetAssemblyTypeName: scr_GameoverManager, Assembly-CSharp
+        m_MethodName: ToGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &1070312247
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -949,7 +1006,7 @@ GameObject:
   - component: {fileID: 1570541856}
   - component: {fileID: 1570541855}
   m_Layer: 5
-  m_Name: "\u8FD4\u56DE\u5927\u5EF3__Btn"
+  m_Name: Lobby Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1048,7 +1105,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1570541855}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 60819325}
+        m_TargetAssemblyTypeName: scr_GameoverManager, Assembly-CSharp
+        m_MethodName: ToLobby
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &1570541857
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1070,7 +1139,7 @@ GameObject:
   - component: {fileID: 1777983893}
   - component: {fileID: 1777983892}
   m_Layer: 5
-  m_Name: "\u672C\u6B21\u5F97\u5206__text"
+  m_Name: CurrentScore Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

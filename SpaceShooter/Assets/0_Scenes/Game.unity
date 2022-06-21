@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 101814012}
   - component: {fileID: 101814011}
   m_Layer: 5
-  m_Name: "Btn_\u91CD\u73A9\u4E00\u6B21"
+  m_Name: Replay  Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -205,7 +205,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 101814012}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1709249059}
+        m_TargetAssemblyTypeName: scr_GameManager, Assembly-CSharp
+        m_MethodName: Replay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &101814012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,7 +269,7 @@ GameObject:
   - component: {fileID: 302367823}
   - component: {fileID: 302367822}
   m_Layer: 5
-  m_Name: "Btn_\u5927\u5EF3"
+  m_Name: Lobby Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -326,7 +338,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 302367823}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1709249059}
+        m_TargetAssemblyTypeName: scr_GameManager, Assembly-CSharp
+        m_MethodName: ToLobby
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &302367823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,7 +399,7 @@ GameObject:
   m_Component:
   - component: {fileID: 311664422}
   m_Layer: 5
-  m_Name: "\u904A\u6232\u66AB\u505C"
+  m_Name: Setting Page
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -646,7 +670,7 @@ GameObject:
   - component: {fileID: 1024294446}
   - component: {fileID: 1024294445}
   m_Layer: 5
-  m_Name: Setting - Btn
+  m_Name: Setting  Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -714,7 +738,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1024294446}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1709249059}
+        m_TargetAssemblyTypeName: scr_GameManager, Assembly-CSharp
+        m_MethodName: Setting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1024294446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1026,7 +1062,7 @@ GameObject:
   - component: {fileID: 1413926382}
   - component: {fileID: 1413926381}
   m_Layer: 5
-  m_Name: "Btn_\u6062\u5FA9\u904A\u6232"
+  m_Name: Resume Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1094,7 +1130,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1413926382}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1709249059}
+        m_TargetAssemblyTypeName: scr_GameManager, Assembly-CSharp
+        m_MethodName: Setting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1413926382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1145,7 +1193,7 @@ GameObject:
   - component: {fileID: 1517737646}
   - component: {fileID: 1517737645}
   m_Layer: 5
-  m_Name: "\u8840\u91CF"
+  m_Name: "\u8840\u689D"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1349,6 +1397,15 @@ MonoBehaviour:
   enemies:
   - {fileID: 7365464256003358220, guid: ed7222360c16ab94c820ebe62f482035, type: 3}
   - {fileID: 8973298642909649316, guid: 3f4a7ca6d08662649be943bf285680ec, type: 3}
+  hpPotion_Obj: {fileID: 1000012970591572, guid: c098a127de001d646a60f17f67cb9302, type: 3}
+  hpPotionSpawnTime: 6
+  hpPotionInterval: 6
+  enemyDamage: 0
+  hitEnemyScore: 0
+  hitAsterroidScore: 0
+  setting_Page: {fileID: 311664421}
+  isSetting: 0
+  playerCurrentHp: 0
 --- !u!1 &1721009211
 GameObject:
   m_ObjectHideFlags: 0
@@ -2106,9 +2163,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1684200214648020127, guid: f9c8581034c23584ca949f9f2f486e63, type: 3}
+      propertyPath: hp
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1684200214648020127, guid: f9c8581034c23584ca949f9f2f486e63, type: 3}
       propertyPath: joystick_obj
       value: 
       objectReference: {fileID: 1844951264}
+    - target: {fileID: 1684200214648020127, guid: f9c8581034c23584ca949f9f2f486e63, type: 3}
+      propertyPath: bulletInterval
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 1684200214967869454, guid: f9c8581034c23584ca949f9f2f486e63, type: 3}
       propertyPath: m_Name
       value: "\u73A9\u5BB6\u98DB\u6A5F"
