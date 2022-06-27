@@ -1,6 +1,6 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class scr_GameManager : MonoBehaviour
 {
@@ -15,7 +15,7 @@ public class scr_GameManager : MonoBehaviour
     [HideInInspector] [Header("打隕石的分數")] public int hitAsterroidScore;
 
     [SerializeField] [Header("設定頁面")] GameObject setting_Page;
-    [SerializeField] bool isSetting;
+    [SerializeField] [Header("是否進設定")] bool isSetting;
 
     [Header("玩家當前血量")] public float playerCurrentHp;
 

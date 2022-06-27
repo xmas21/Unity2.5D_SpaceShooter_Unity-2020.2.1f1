@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class scr_PlayerController : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class scr_PlayerController : MonoBehaviour
     [SerializeField] [Header("子彈生成點")] Transform bullet_trans;
 
     [SerializeField] [Header("子彈生成間隔")] float bulletInterval;
+
+    [SerializeField] [Header("操控方式選單")] Dropdown moveway_Dropdown;
 
     float X_min, X_max;      // 飛機 X軸上下限
     float Y_min, Y_max;      // 飛機 Y軸上下面
@@ -73,6 +76,25 @@ public class scr_PlayerController : MonoBehaviour
     public void UsingJoystick(Vector3 pos)
     {
         if (isJoysticked) transform.Translate(pos.x * moveSpeed * Time.deltaTime, 0f, pos.y * moveSpeed * Time.deltaTime);
+    }
+
+    /// <summary>
+    /// 切換操控方式
+    /// </summary>
+    public void ChangeMoveway()
+    {
+        switch (moveway_Dropdown.value)
+        {
+            case 0:
+                pcMoveway = PCmoveway.mouse;
+                break;
+            case 1:
+                pcMoveway = PCmoveway.keyboard;
+                break;
+            case 2:
+                pcMoveway = PCmoveway.joystick;
+                break;
+        }
     }
 
     /// <summary>
